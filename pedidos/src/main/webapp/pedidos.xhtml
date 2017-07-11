@@ -22,7 +22,10 @@
 				<p:outputLabel value="Cliente:" for="cliente" />
 				<p:spacer />
 				
-				<p:autoComplete id="cliente" size="80" />
+				<p:autoComplete id="cliente" value="#{pedidosMB.pedido.cliente}"
+					converter="clienteConverter" completeMethod="#{pedidosMB.buscaCliente}"
+					var="c" itemLabel="#{c.nome}" itemValue="#{c}"
+					size="80" />
 				<p:commandButton icon="ui-icon-person" title="Novo Cliente" />
 			</h:panelGrid>
 			
@@ -31,7 +34,10 @@
 				<p:outputLabel value="Quantidade:" for="quantidade" />
 				<p:spacer />
 				
-				<p:autoComplete id="produto" size="54" />
+				<p:autoComplete id="produto" value="#{pedidosMB.item.produto}"
+					converter="produtoConverter" completeMethod="#{pedidosMB.buscaProduto}"
+					var="p" itemLabel="#{p.descricao}" itemValue="#{p}"
+					size="54" />
 				<p:inputText id="quantidade" />
 				<p:commandButton icon="ui-icon-plus" title="Adicionar Item" />
 			</h:panelGrid>
