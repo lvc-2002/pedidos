@@ -122,4 +122,12 @@ public class Pedido implements Serializable {
 		return "Pedido [id=" + id + ", valor=" + valor + ", cliente=" + cliente + "]";
 	}
 	
+	public void adiciona(Item item) {
+		itens.add(item);
+	}
+	
+	public boolean remove(Item item) {
+		return itens.remove(item);
+	}
+	
 }

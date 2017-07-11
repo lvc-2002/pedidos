@@ -11,8 +11,10 @@ import javax.inject.Named;
 import com.lvc.pedidos.dao.BuscaDeClienteDao;
 import com.lvc.pedidos.dao.BuscaDeProdutoDao;
 import com.lvc.pedidos.model.Cliente;
+import com.lvc.pedidos.model.Item;
 import com.lvc.pedidos.model.Pedido;
 import com.lvc.pedidos.model.Produto;
+import com.lvc.pedidos.util.pedidos.MessagesUtil;
 
 @Named
 @ViewScoped
@@ -28,6 +30,8 @@ public class PedidosMB implements Serializable {
 	
 	private Pedido pedido;
 	
+	private Item item;
+	
 	public Pedido getPedido() {
 		return pedido;
 	}
@@ -36,9 +40,18 @@ public class PedidosMB implements Serializable {
 		this.pedido = pedido;
 	}
 	
+	public Item getItem() {
+		return item;
+	}
+	
+	public void setItem(Item item) {
+		this.item = item;
+	}
+	
 	@PostConstruct
 	public void init() {
 		pedido = new Pedido();
+		item = new Item();
 	}
 	
 	public List<Cliente> buscaCliente(String nome) {
@@ -48,5 +61,17 @@ public class PedidosMB implements Serializable {
 	public List<Produto> buscaProduto(String descricao) {
 		return produtoDao.pesquisa(descricao);
 	}
-
+	
+	public void adicionaItem() {
+		pedido.adiciona(item);
+	}
+	
+	public void removeItem() {
+		if(pedido.remove(item)) {
+			MessagesUtil.info("Item removido com sucesso!", null);
+		}else {
+			MessagesUtil.error("Erro ao remover item!", null);
+		}
+	}
+	
 }
