@@ -1,0 +1,8 @@
+# Servidor
+/Servers
+
+#Arquivos Gerais
+.metadata
+.class
+.jar
+.war
