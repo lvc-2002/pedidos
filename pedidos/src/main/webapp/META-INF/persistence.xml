@@ -7,6 +7,13 @@
 		
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		
+		<class>com.lvc.pedidos.model.Cliente</class>
+		<class>com.lvc.pedidos.model.Contato</class>
+		<class>com.lvc.pedidos.model.Endereco</class>
+		<class>com.lvc.pedidos.model.Item</class>
+		<class>com.lvc.pedidos.model.Pedido</class>
+		<class>com.lvc.pedidos.model.Produto</class>
+		
 		<properties>
 			<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/pedidos" />
 			<property name="javax.persistence.jdbc.user" value="root" />
