@@ -3,11 +3,13 @@ package com.lvc.pedidos.converters;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
+import javax.faces.convert.FacesConverter;
 import javax.inject.Inject;
 
 import com.lvc.pedidos.dao.BuscaDeClienteDao;
 import com.lvc.pedidos.model.Cliente;
 
+@FacesConverter(value="clienteConverter")
 public class ClienteConverter implements Converter {
 	
 	@Inject
