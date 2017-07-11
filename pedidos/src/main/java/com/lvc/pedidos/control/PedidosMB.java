@@ -74,4 +74,17 @@ public class PedidosMB implements Serializable {
 		}
 	}
 	
+	public Long getQuantidadeTotalDePedidos() {
+		Long total = 0L;
+		for(Item i : pedido.getItens()) {
+			total += i.getQuantidade();
+		}
+		return total;
+	}
+	
+	// FIXME Cálculo do Valor Total do Pedido
+	public Double getValorTotalDoPedido() {
+		return getQuantidadeTotalDePedidos() * 20.00;
+	}
+	
 }
