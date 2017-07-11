@@ -12,7 +12,10 @@
 			
 			<h:panelGrid columns="1">
 				<p:outputLabel value="Data:" for="data" />
-				<p:inputText id="data" disabled="true" />
+				<p:inputText id="data" value="#{pedidosMB.pedido.data.time}"
+					disabled="true">
+					<f:convertDateTime pattern="dd/MM/yyyy" />
+				</p:inputText>
 			</h:panelGrid>
 			
 			<h:panelGrid columns="2">
