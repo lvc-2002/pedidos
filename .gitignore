@@ -9,3 +9,11 @@
 
 # Configurações
 RemoteSystemsTempFiles
+
+# Projeto
+pedidos/.settings/*
+pedidos/.classpath
+pedidos/.gitignore
+pedidos/.project
+pedidos/.tern-project
+pedidos/pom.xml
