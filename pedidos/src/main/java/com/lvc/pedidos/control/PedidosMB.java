@@ -10,10 +10,12 @@ import javax.inject.Named;
 
 import com.lvc.pedidos.dao.BuscaDeClienteDao;
 import com.lvc.pedidos.dao.BuscaDeProdutoDao;
+import com.lvc.pedidos.dao.PedidoDao;
 import com.lvc.pedidos.model.Cliente;
 import com.lvc.pedidos.model.Item;
 import com.lvc.pedidos.model.Pedido;
 import com.lvc.pedidos.model.Produto;
+import com.lvc.pedidos.util.jpa.Transactional;
 import com.lvc.pedidos.util.pedidos.MessagesUtil;
 
 @Named
@@ -27,6 +29,9 @@ public class PedidosMB implements Serializable {
 	
 	@Inject
 	private BuscaDeProdutoDao produtoDao;
+	
+	@Inject
+	private PedidoDao pedidoDao;
 	
 	private Pedido pedido;
 	
@@ -85,6 +90,13 @@ public class PedidosMB implements Serializable {
 	// FIXME Cálculo do Valor Total do Pedido
 	public Double getValorTotalDoPedido() {
 		return getQuantidadeTotalDePedidos() * 20.00;
+	}
+	
+	@Transactional
+	public void salvaPedido() {
+		pedidoDao.salva(pedido);
+		MessagesUtil.info("Pedido cadastrado com sucesso!", null);
+		init();
 	}
 	
 }
