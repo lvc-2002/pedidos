@@ -1,8 +1,11 @@
 # Servidor
 /Servers
 
-#Arquivos Gerais
+# Arquivos Gerais
 .metadata
 .class
 .jar
 .war
+
+# Configurações
+RemoteSystemsTempFiles
