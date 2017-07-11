@@ -1,6 +1,7 @@
 package com.lvc.pedidos.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -36,7 +37,13 @@ public class Pedido implements Serializable {
 	
 	@OneToMany(mappedBy="pedido")
 	private List<Item> itens;
-
+	
+	public Pedido() {
+		data = Calendar.getInstance();
+		status = Status.ENCOMENDADO;
+		itens = new ArrayList<>();
+	}
+	
 	public Long getId() {
 		return id;
 	}
