@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	template="/WEB-INF/templates/main.xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+	<ui:define name="content">
+		
+		<h:form id="frm-pedido">
+			
+			<h:panelGrid columns="1">
+				<p:outputLabel value="Data:" for="data" />
+				<p:inputText id="data" disabled="true" />
+			</h:panelGrid>
+			
+			<h:panelGrid columns="2">
+				<p:outputLabel value="Cliente:" for="cliente" />
+				<p:spacer />
+				
+				<p:autoComplete id="cliente" size="80" />
+				<p:commandButton icon="ui-icon-person" title="Novo Cliente" />
+			</h:panelGrid>
+			
+			<h:panelGrid columns="3">
+				<p:outputLabel value="Produto:" for="produto" />
+				<p:outputLabel value="Quantidade:" for="quantidade" />
+				<p:spacer />
+				
+				<p:autoComplete id="produto" size="54" />
+				<p:inputText id="quantidade" />
+				<p:commandButton icon="ui-icon-plus" title="Adicionar Item" />
+			</h:panelGrid>
+			
+			<p:dataTable id="tb-itens" emptyMessage="Não há itens adicionados..."
+				style="margin-top: 10px;">
+				<p:column headerText="Item" width="50">
+					<p:outputLabel value="" />
+				</p:column>
+				<p:column headerText="Descrição">
+					<p:outputLabel value="" />
+				</p:column>
+				<p:column headerText="Quantidade" width="100">
+					<p:outputLabel value="" />
+				</p:column>
+				<p:column>
+					<p:commandButton icon="ui-icon-tash" title="Remover Item" />
+				</p:column>
+			</p:dataTable>
+			
+			<p:commandButton value="Salvar" icon="ui-icon-disk" title="Salvar Pedido"
+				styleClass="botao-a-direita" style="margin: 10px 0;" />
+		</h:form>
+		
+	</ui:define>
+
+</ui:composition>
