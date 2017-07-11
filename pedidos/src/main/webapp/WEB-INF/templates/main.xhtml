@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/pedidos/facelets"
+	xmlns:f="http://java.sun.com/pedidos/core"
+	xmlns:h="http://java.sun.com/pedidos/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>JSF</title>
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputScript library="js" name="main.js" />
+	<h:outputScript library="js" name="locales.js" />
+</h:head>
+<body>
+	
+	<p:growl id="msgs" />
+	
+	<div class="header">
+		<div class="container header-container">
+			<div class="logo-container">
+				<h1 class="app-title">JSF</h1>
+			</div>
+			<div class="menu-container">
+				<div class="img-perfil">
+					<p:graphicImage library="img" name="img-perfil.jpg"
+						styleClass="img-perfil" />
+				</div>
+				<div class="menu">
+					<h:form>
+						<ui:include src="/WEB-INF/telas/menu.xhtml" />
+					</h:form>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<div class="container content">
+		<ui:insert name="content" />
+	</div>
+	
+	<div class="footer">
+		<div class="container footer-container">
+			<p class="footer-text">JSF - LVC Desenvolvimento de Softwares 2017</p>
+		</div>
+	</div>
+	
+</body>
+</html>

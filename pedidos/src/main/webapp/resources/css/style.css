@@ -1,0 +1,150 @@
+@CHARSET "ISO-8859-1";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.ui-widget {
+	font-size: 16px !important;
+}
+
+body {
+	background: #fff;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.container {
+	width: 1000px;
+}
+
+.header {
+	width: 100%;
+	height: 60px;
+	background: #0081c2;
+	background-image: linear-gradient(to bottom, #0088cc, #0077b3);
+	background-repeat: repeat-x;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.header-container {
+	height: 100%;
+	margin: auto;
+	position: relative;
+}
+
+.logo-container {
+	width: 200px;
+	height: 60px;
+	position: absolute;
+	left: 0;
+}
+
+.app-title {
+	font-size: 50px;
+	position: absolute;
+	left: 0;
+	bottom: 0;
+	color: #fff;
+}
+
+.menu-container {
+	width: 50px;
+	height: 30px;
+	margin: 15px 0;
+	position: absolute;
+	right: 0;
+}
+
+.img-perfil {
+	width: 30px;
+	height: 30px;
+	position: absolute;
+	left: 0;
+	background: #333;
+	border-radius: 10px;
+}
+
+.menu {
+	width: 20px;
+	height: 10px;
+	margin: 10px 0 10px 0;
+	position: absolute;
+	right: 0;
+}
+
+.ui-menu.ui-widget {
+	top: 60px !important;
+	right: 0 !important;
+	margin-top: 5px;
+	padding: 5px;
+	border: 1px solid #efefef;
+}
+
+.content {
+	min-height: 300px;
+	margin: 20px auto;
+	color: #333;
+	font-size: 1.1em;
+	position: relative;
+}
+
+.toolbar {
+	height: 30px;
+	margin: 10px auto;
+	padding: 5px 0;
+	position: relative;
+}
+.toolbar * {
+	display: inline-block;
+}
+.pesquisa-container {
+	position: absolute;
+	left: 0;
+}
+.opcoes-container {
+	position: absolute;
+	right: 0;
+}
+.opcoes-container * {
+	font-size: 14px !important;
+}
+
+.pg {
+	width: 100%;
+	margin: 10px auto;
+	padding: 10px 0;
+	border-top: 1px solid #efefef;
+}
+
+.secao {
+	margin: 10px auto;
+}
+
+.footer {
+	width: 100%;
+	border-top: 1px solid #efefef;
+}
+.footer-container {
+	margin: auto;
+}
+.footer-text {
+	color: #333;
+	margin: 10px auto 0 0;
+}
+
+.botao-container {
+	padding: 10px 0;
+}
+.botao-a-direita {
+	float: right;
+}
+
+.text-align-center {
+	display: block;
+	text-align: center !important;
+}
+.text-align-right {
+	display: block;
+	text-align: right !important;
+}
