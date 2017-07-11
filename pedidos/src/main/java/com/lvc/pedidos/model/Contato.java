@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Contato implements Serializable {
@@ -21,6 +22,7 @@ public class Contato implements Serializable {
 	
 	private String whatsApp;
 	
+	@OneToOne(mappedBy="contato")
 	private Cliente cliente;
 
 	public Long getId() {

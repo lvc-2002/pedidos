@@ -5,6 +5,7 @@ import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Endereco implements Serializable {
@@ -29,6 +30,7 @@ public class Endereco implements Serializable {
 	
 	private String uf;
 	
+	@OneToOne(mappedBy="endereco")
 	private Cliente cliente;
 
 	public Long getId() {

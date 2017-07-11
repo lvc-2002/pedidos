@@ -3,6 +3,7 @@ package com.lvc.pedidos.model;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -20,10 +21,10 @@ public class Cliente implements Serializable {
 	
 	private String nome;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private Endereco endereco;
 	
-	@OneToOne
+	@OneToOne(cascade=CascadeType.ALL)
 	private Contato contato;
 	
 	@OneToMany(mappedBy="cliente")
