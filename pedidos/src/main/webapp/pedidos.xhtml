@@ -45,11 +45,11 @@
 				<p:commandButton icon="ui-icon-plus" title="Adicionar Item"
 					action="#{pedidosMB.adicionaItem()}"
 					process="pg-produto"
-					update="pg-produto tb-itens" />
+					update="pg-produto tb-itens pg-totais" />
 			</h:panelGrid>
 			
 			<p:dataTable id="tb-itens" value="#{pedidosMB.pedido.itens}"
-				var="i"
+				var="i" scrollable="true" scrollHeight="200"
 				emptyMessage="Não há itens adicionados..."
 				style="margin-top: 10px;">
 				<p:column headerText="Item" width="50">
@@ -70,8 +70,19 @@
 				</p:column>
 			</p:dataTable>
 			
-			<p:commandButton value="Salvar" icon="ui-icon-disk" title="Salvar Pedido"
+			<h:panelGrid id="pg-totais" columns="3"
+				styleClass="pg" columnClasses="pg-label">
+				<p:outputLabel value="Quantidade Total: " />
+				<p:outputLabel value="#{pedidosMB.quantidadeTotalDePedidos}" />
+				<p:spacer />
+				
+				<p:outputLabel value="Valor Total: " />
+				<p:outputLabel value="#{pedidosMB.valorTotalDoPedido}">
+					<f:convertNumber type="currency" />
+				</p:outputLabel>
+				<p:commandButton value="Salvar" icon="ui-icon-disk" title="Salvar Pedido"
 				styleClass="botao-a-direita" style="margin: 10px 0;" />
+			</h:panelGrid>
 			
 			
 			<p:confirmDialog id="dlg-confirma-exclusao" widgetVar="dlg-confirma-exclusao"
