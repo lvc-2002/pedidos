@@ -134,8 +134,10 @@ public class Pedido implements Serializable {
 	
 	public Long getQuantidadeTotal() {
 		Long total = 0L;
-		for(Item i : itens) {
-			total += i.getQuantidade();
+		if (!itens.isEmpty()) {
+			for (Item i : itens) {
+				total += i.getQuantidade();
+			}
 		}
 		return total;
 	}
