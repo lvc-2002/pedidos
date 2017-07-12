@@ -68,8 +68,14 @@ public class PedidosMB implements Serializable {
 	}
 	
 	public void adicionaItem() {
-		pedido.adiciona(item);
-		item = new Item();
+		if(item.getProduto() == null) {
+			MessagesUtil.error("Selecione um produto!", null);
+		}else if(item.getQuantidade() == null) {
+			MessagesUtil.error("Informe a quantidade!", null);
+		}else {
+			pedido.adiciona(item);
+			item = new Item();
+		}
 	}
 	
 	public void removeItem() {
@@ -82,22 +88,27 @@ public class PedidosMB implements Serializable {
 	
 	public Long getQuantidadeTotalDePedidos() {
 		Long total = 0L;
-		for(Item i : pedido.getItens()) {
+		/*for(Item i : pedido.getItens()) {
 			total += i.getQuantidade();
-		}
+		}*/
 		return total;
 	}
 	
 	// FIXME Cálculo do Valor Total do Pedido
 	public Double getValorTotalDoPedido() {
-		return getQuantidadeTotalDePedidos() * 20.00;
+		/*return getQuantidadeTotalDePedidos() * 20.00;*/
+		return 0.00;
 	}
 	
 	@Transactional
 	public void salvaPedido() {
-		pedidoDao.salva(pedido);
-		MessagesUtil.info("Pedido cadastrado com sucesso!", null);
-		init();
+		if(!pedido.getItens().isEmpty()) {
+			pedidoDao.salva(pedido);
+			MessagesUtil.info("Pedido cadastrado com sucesso!", null);
+			init();
+		}else {
+			MessagesUtil.error("Adicione pelo menos um item!", null);
+		}
 	}
 	
 }

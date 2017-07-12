@@ -28,6 +28,8 @@
 					size="80" />
 					
 				<p:commandButton icon="ui-icon-person" title="Novo Cliente" />
+				
+				<p:message for="cliente" />
 			</h:panelGrid>
 			
 			<h:panelGrid id="pg-produto" columns="3">
@@ -45,7 +47,7 @@
 				<p:commandButton icon="ui-icon-plus" title="Adicionar Item"
 					action="#{pedidosMB.adicionaItem()}"
 					process="pg-produto"
-					update="pg-produto tb-itens pg-totais" />
+					update=":msgs pg-produto tb-itens pg-totais" />
 			</h:panelGrid>
 			
 			<p:dataTable id="tb-itens" value="#{pedidosMB.pedido.itens}"

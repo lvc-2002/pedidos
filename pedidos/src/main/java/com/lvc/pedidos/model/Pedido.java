@@ -15,6 +15,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
 @Entity
 public class Pedido implements Serializable {
@@ -32,6 +33,7 @@ public class Pedido implements Serializable {
 	private Status status;
 	
 	@ManyToOne
+	@NotNull
 	private Cliente cliente;
 	
 	@OneToMany(mappedBy="pedido", cascade=CascadeType.ALL)
