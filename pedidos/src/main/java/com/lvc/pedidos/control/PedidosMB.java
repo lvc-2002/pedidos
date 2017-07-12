@@ -37,8 +37,6 @@ public class PedidosMB implements Serializable {
 	
 	private Item item;
 	
-	private long numeroItem;
-	
 	public Pedido getPedido() {
 		return pedido;
 	}
@@ -51,11 +49,14 @@ public class PedidosMB implements Serializable {
 		return item;
 	}
 	
+	public void setItem(Item item) {
+		this.item = item;
+	}
+	
 	@PostConstruct
 	public void init() {
 		pedido = new Pedido();
 		item = new Item();
-		numeroItem = 0;
 	}
 	
 	public List<Cliente> buscaCliente(String nome) {
@@ -67,7 +68,6 @@ public class PedidosMB implements Serializable {
 	}
 	
 	public void adicionaItem() {
-		item.setNumero(++numeroItem);
 		pedido.adiciona(item);
 		item = new Item();
 	}

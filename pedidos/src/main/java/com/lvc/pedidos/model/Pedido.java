@@ -123,11 +123,18 @@ public class Pedido implements Serializable {
 	}
 	
 	public void adiciona(Item item) {
+		long numero = itens.size() + 1;
+		item.setNumero(numero);
 		itens.add(item);
 	}
 	
 	public boolean remove(Item item) {
-		return itens.remove(item);
+		boolean resultado = itens.remove(item);
+		long numero = 0;
+		for(Item i : itens) {
+			i.setNumero(++numero);
+		}
+		return resultado;
 	}
 	
 }

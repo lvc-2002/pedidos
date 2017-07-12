@@ -61,13 +61,30 @@
 				<p:column headerText="Quantidade" width="100">
 					<p:outputLabel value="#{i.quantidade}" />
 				</p:column>
-				<p:column>
-					<p:commandButton icon="ui-icon-trash" title="Remover Item" />
+				<p:column width="50">
+					<p:commandButton icon="ui-icon-trash" title="Remover Item"
+						oncomplete="PF('dlg-confirma-exclusao').show()">
+						<f:setPropertyActionListener value="#{i}"
+							target="#{pedidosMB.item}" />
+					</p:commandButton>
 				</p:column>
 			</p:dataTable>
 			
 			<p:commandButton value="Salvar" icon="ui-icon-disk" title="Salvar Pedido"
 				styleClass="botao-a-direita" style="margin: 10px 0;" />
+			
+			
+			<p:confirmDialog id="dlg-confirma-exclusao" widgetVar="dlg-confirma-exclusao"
+				message="#{pedidosMB.item.numero}">
+				<p:commandButton value="Sim" icon="ui-icon-check" title="Confirmar"
+					action="#{pedidosMB.removeItem()}"
+					process="@this"
+					update=":msgs tb-itens"
+					oncomplete="PF('dlg-confirma-exclusao').hide()" />
+				<p:commandButton value="Não" icon="ui-icon-close" title="Cancelar"
+					oncomplete="PF('dlg-confirma-exclusao').hide()" />
+			</p:confirmDialog>
+			
 		</h:form>
 		
 	</ui:define>
