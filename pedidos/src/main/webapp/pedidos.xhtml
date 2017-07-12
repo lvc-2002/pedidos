@@ -26,10 +26,11 @@
 					converter="clienteConverter" completeMethod="#{pedidosMB.buscaCliente}"
 					var="c" itemLabel="#{c.nome}" itemValue="#{c}"
 					size="80" />
+					
 				<p:commandButton icon="ui-icon-person" title="Novo Cliente" />
 			</h:panelGrid>
 			
-			<h:panelGrid columns="3">
+			<h:panelGrid id="pg-produto" columns="3">
 				<p:outputLabel value="Produto:" for="produto" />
 				<p:outputLabel value="Quantidade:" for="quantidade" />
 				<p:spacer />
@@ -38,23 +39,30 @@
 					converter="produtoConverter" completeMethod="#{pedidosMB.buscaProduto}"
 					var="p" itemLabel="#{p.descricao}" itemValue="#{p}"
 					size="54" />
-				<p:inputText id="quantidade" />
-				<p:commandButton icon="ui-icon-plus" title="Adicionar Item" />
+					
+				<p:inputText id="quantidade" value="#{pedidosMB.item.quantidade}" />
+				
+				<p:commandButton icon="ui-icon-plus" title="Adicionar Item"
+					action="#{pedidosMB.adicionaItem()}"
+					process="pg-produto"
+					update="pg-produto tb-itens" />
 			</h:panelGrid>
 			
-			<p:dataTable id="tb-itens" emptyMessage="Não há itens adicionados..."
+			<p:dataTable id="tb-itens" value="#{pedidosMB.pedido.itens}"
+				var="i"
+				emptyMessage="Não há itens adicionados..."
 				style="margin-top: 10px;">
 				<p:column headerText="Item" width="50">
-					<p:outputLabel value="" />
+					<p:outputLabel value="#{i.numero}" />
 				</p:column>
 				<p:column headerText="Descrição">
-					<p:outputLabel value="" />
+					<p:outputLabel value="#{i.produto.descricao}" />
 				</p:column>
 				<p:column headerText="Quantidade" width="100">
-					<p:outputLabel value="" />
+					<p:outputLabel value="#{i.quantidade}" />
 				</p:column>
 				<p:column>
-					<p:commandButton icon="ui-icon-tash" title="Remover Item" />
+					<p:commandButton icon="ui-icon-trash" title="Remover Item" />
 				</p:column>
 			</p:dataTable>
 			

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class Item implements Serializable {
@@ -15,6 +16,9 @@ public class Item implements Serializable {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@Transient
+	private Long numero;
 	
 	private Long quantidade;
 	
@@ -32,6 +36,14 @@ public class Item implements Serializable {
 		this.id = id;
 	}
 
+	public Long getNumero() {
+		return numero;
+	}
+	
+	public void setNumero(Long numero) {
+		this.numero = numero;
+	}
+	
 	public Long getQuantidade() {
 		return quantidade;
 	}
