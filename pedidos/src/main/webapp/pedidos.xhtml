@@ -81,7 +81,10 @@
 					<f:convertNumber type="currency" />
 				</p:outputLabel>
 				<p:commandButton value="Salvar" icon="ui-icon-disk" title="Salvar Pedido"
-				styleClass="botao-a-direita" style="margin: 10px 0;" />
+					action="#{pedidosMB.salvaPedido()}"
+					process="@form"
+					update=":msgs @form"
+					styleClass="botao-a-direita" style="margin: 10px 0;" />
 			</h:panelGrid>
 			
 			

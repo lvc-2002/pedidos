@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -30,12 +31,10 @@ public class Pedido implements Serializable {
 	@Enumerated(EnumType.STRING)
 	private Status status;
 	
-	private Double valor;
-	
 	@ManyToOne
 	private Cliente cliente;
 	
-	@OneToMany(mappedBy="pedido")
+	@OneToMany(mappedBy="pedido", cascade=CascadeType.ALL)
 	private List<Item> itens;
 	
 	public Pedido() {
@@ -67,15 +66,7 @@ public class Pedido implements Serializable {
 	public void setStatus(Status status) {
 		this.status = status;
 	}
-
-	public Double getValor() {
-		return valor;
-	}
-
-	public void setValor(Double valor) {
-		this.valor = valor;
-	}
-
+	
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -116,15 +107,17 @@ public class Pedido implements Serializable {
 			return false;
 		return true;
 	}
-
+	
 	@Override
 	public String toString() {
-		return "Pedido [id=" + id + ", valor=" + valor + ", cliente=" + cliente + "]";
+		return "Pedido [id=" + id + ", data=" + data + ", status=" + status + ", cliente=" + cliente + ", itens="
+				+ itens + "]";
 	}
 	
 	public void adiciona(Item item) {
 		long numero = itens.size() + 1;
 		item.setNumero(numero);
+		item.setPedido(this);
 		itens.add(item);
 	}
 	
@@ -135,6 +128,18 @@ public class Pedido implements Serializable {
 			i.setNumero(++numero);
 		}
 		return resultado;
+	}
+	
+	public Long getQuantidadeTotal() {
+		Long total = 0L;
+		for(Item i : itens) {
+			total += i.getQuantidade();
+		}
+		return total;
+	}
+	
+	public Double getValorTotal() {
+		return getQuantidadeTotal() * 20.00;
 	}
 	
 }
